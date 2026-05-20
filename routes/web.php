@@ -18,7 +18,10 @@ Route::get('/', function () {
 
     $stok = StokDarah::sum('stok');
 
-    $donorTerbaru = Donor::latest()->take(5)->get();
+    $donorTerbaru = Donor::with('pendonor')
+        ->latest()
+        ->take(5)
+        ->get();
 
     return view('dashboard', compact(
         'totalPendonor',
@@ -31,9 +34,14 @@ Route::get('/', function () {
 
 Route::get('/laporan', function () {
 
-    $donor = Donor::with('pendonor')->get();
+    $donors = Donor::with('pendonor')->latest()->get();
 
-    return view('laporan', compact('donor'));
+    $belumDonor = Pendonor::doesntHave('donors')->get();
+
+    return view('laporan', compact(
+        'donors',
+        'belumDonor'
+    ));
 
 });
 

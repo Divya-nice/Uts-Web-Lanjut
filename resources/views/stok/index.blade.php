@@ -19,7 +19,7 @@
 
 <div class="bg-white p-6 rounded-2xl shadow">
 
-    <table class="w-full">
+    <table class="w-full overflow-hidden rounded-xl">
 
         <thead class="bg-gradient-to-r from-emerald-400 to-green-600 text-white text-center">
 

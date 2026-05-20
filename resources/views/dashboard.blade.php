@@ -60,14 +60,16 @@
 
     </h2>
 
-    <table class="w-full">
+    <table class="w-full overflow-hidden rounded-xl">
 
         <thead>
 
             <tr class="bg-gradient-to-r from-red-500 to-red-700 text-white text-center">
 
                 <th class="p-4">No</th>
+                <th class="p-4">NIK</th>
                 <th class="p-4">Nama</th>
+                <th class="p-4">Golongan Darah</th>
                 <th class="p-4">Tanggal</th>
                 <th class="p-4">Jumlah</th>
 
@@ -77,16 +79,24 @@
 
         <tbody>
 
-        @foreach($donorTerbaru as $item)
+        @forelse($donorTerbaru as $item)
 
-        <tr class="border-b text-center">
+        <tr class="border-b text-center hover:bg-red-50 transition duration-200">
 
             <td class="p-4">
                 {{ $loop->iteration }}
             </td>
 
             <td class="p-4">
-                {{ $item->pendonor->nama }}
+                {{ $item->pendonor->nik ?? '-' }}
+            </td>
+
+            <td class="p-4 font-semibold">
+                {{ $item->pendonor->nama ?? '-' }}
+            </td>
+
+            <td class="p-4">
+                {{ $item->pendonor->golongan_darah ?? '-' }}
             </td>
 
             <td class="p-4">
@@ -99,7 +109,19 @@
 
         </tr>
 
-        @endforeach
+        @empty
+
+        <tr>
+
+            <td colspan="6" class="p-6 text-center text-gray-500">
+
+                Belum ada data donor
+
+            </td>
+
+        </tr>
+
+        @endforelse
 
         </tbody>
 

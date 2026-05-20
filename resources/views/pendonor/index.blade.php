@@ -17,7 +17,7 @@
 
 <div class="bg-white p-6 rounded-2xl shadow">
 
-    <table class="w-full border border-gray-300">
+    <table class="w-full border border-gray-300 overflow-hidden rounded-xl">
 
         <thead class="bg-gradient-to-r from-rose-400 to-red-500 text-white text-center">
 
